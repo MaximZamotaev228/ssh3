@@ -1,83 +1,55 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Веб 3</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+    <title>Задание 3</title>
 </head>
+<body>
 
-<body style="font-size: 20px;">
-	<form action="form.php" method="post">
-		<p>
-			<label>Имя пользователя<br><br>
-				<input placeholder="Имя" type="text" name="name" value="">
-			</label>
-		<p>
-			<label>e-mail пользователя<br><br>
-				<input placeholder="E-mail" type="text" name="email" value="">
-			</label>
-		</p>
-		<p>
-			<label>Год рождения<br><br>
-				<select name="year">
-					<option value="">Select...</option>
-					<?php
-					for ($i = 2008; $i >= 1900; --$i) {
-						echo "<option value='$i'>$i</option>";
-					}
-					?>
-				</select>
-			</label>
-		</p>
-		<p>Пол<br><br>
-			<label>
-				<input type="radio" name="gender" value="man">Мужской
-			</label>
-			<label>
-				<input type="radio" name="gender" value="woman">Женский
-			</label>
-		</p>
-		<p>Кол-во конечностей<br><br>
-			<label>
-				<input type="radio" name="numlimbs" value="1">1
-			</label>
-			<label>
-				<input type="radio" name="numlimbs" value="2">2
-			</label>
-			<label>
-				<input type="radio" name="numlimbs" value="3">3
-			</label>
-			<label>
-				<input type="radio" name="numlimbs" value="4">4
-			</label>
-		</p>
-		<p>
-			<label>Сверхспособности<br><br>
-				<select multiple name="super-powers[]">
-					<option value="immortality">Бессмертие</option>
-					<option value="walkthrough-walls">Прохождение сквозь стены</option>
-					<option value="levitation">Левитация</option>
-				</select>
-			</label>
-		</p>
-		<div>
-			<p>
-				<label>Биография<br><br>
-					<textarea placeholder="Расскажите о себе" name="biography"></textarea>
-				</label>
-			</p>
-		</div>
-		<p>
-			<label>
-				<input type="checkbox" name="agree">С контранктом ознакомлен
-				(а)
-			</label>
-		</p>
-		<p>
-			<input type="submit" value="Отправить">
-		</p>
-	</form>
+    <?php
+        include("form.php");
+    ?>
+    
+    <form action="" method="post">
+        <?php 
+                echo  '<div style="font-size: 25px; color: red; border-radius: 5px; font-weight: bold; text-align: center;">'.$msg.'</div>' ;
+        ?>
+        
+        <label>Имя: <input type="text" class="mrg" name="name" value="<?php echo $name; ?>"></label>
+
+        <label>E-mail: <input type="email" class="mrg" name="email" value="<?php echo $email; ?>"></label>
+
+        <label>Дата рождения: <input type="date" name="bdate" id="" class="mrg" value="<?php echo $date; ?>"></label>
+
+        <div style="display: flex; align-items: center;">
+            <label>Пол: </label>
+            М<input type="radio" name="gender" id="" class="mrg" value="M" <?php echo $gm ?>>
+            Ж<input type="radio" name="gender" id="" class="mrg" value="W" <?php echo $gw ?>>
+        </div>
+
+        <label for="">Количество конечностей:
+            1<input type="radio" name="limb" id="1limb" value="1" <?php echo $l1; ?>>
+            2<input type="radio" name="limb" id="2limb" value="2" <?php echo $l2; ?>>
+            3<input type="radio" name="limb" id="3limb" value="3" <?php echo $l3; ?>>
+            4<input type="radio" name="limb" id="4limb" value="4" <?php echo $l4; ?>>
+        </label>
+
+        <label for="" class="mrg">Суперспособности:</label>
+        <select name="super[]" id="" multiple>
+            <option name="super1" value="Бессмертие" <?php echo $sg;?>>Бессмертие</option>
+            <option name="super2" value="Прохождение сковзь стены" <?php echo $sw;?>>Прохождение сковзь стены</option>
+            <option name="super3" value="Левитация" <?php echo $sl;?>>Левитация</option>
+        </select>
+            
+        <label for="biograf" class="mrg">Биография: </label><textarea id="" cols="30" rows="10" class="mrg" style="resize: none;" name="biograf"><?php echo $biograf;?></textarea>
+
+        <label>С контактом ознакомлен:<input type="checkbox" name="check" id="" class="mrg" <?php echo $ch; ?>></label>
+
+        <button name="btn" type="submit" class="mrg" value="Отправить" style="color: white;background-color: rgba(255, 0, 0, 0.726);border-radius: 15px;width: 150px;height: 35px;font-size: 20px;">Отправить</button>
+    </form>
+    
 </body>
-
 </html>
